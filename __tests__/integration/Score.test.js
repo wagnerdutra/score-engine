@@ -1,15 +1,12 @@
-const { connect, disconnect, truncate } = require('../utils/dbHelper')
+const DbHelper = require('../utils/dbHelper')
 const { createUserScore, computeUserScore } = require('../utils/score')
 
 describe('Score', () => {
-  beforeAll(async () => {
-    await connect()
-    await truncate()
-  })
+  beforeAll(() => DbHelper.connect())
 
-  afterAll(() => disconnect())
+  afterAll(() => DbHelper.disconnect())
 
-  beforeEach(() => truncate())
+  beforeEach(() => DbHelper.truncate())
 
   it('should create the score', async () => {
     const response = await createUserScore('1')
