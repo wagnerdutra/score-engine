@@ -16,6 +16,11 @@ class ScoreController {
     userScore.score = userScore.score + score
     return res.json(await userScore.save())
   }
+
+  async getUserScore(req, res) {
+    const userId = req.query.userId
+    return res.json(await Score.findOne({ userId }))
+  }
 }
 
 module.exports = new ScoreController()

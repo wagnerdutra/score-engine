@@ -19,6 +19,8 @@ routes.post(
   handler(ScoreController.update)
 )
 
+routes.get('/getUserScore', handler(ScoreController.getUserScore))
+
 routes.get('/health', handler(MetricsController.health))
 
 routes.get('/ready', MetricsController.ready)
